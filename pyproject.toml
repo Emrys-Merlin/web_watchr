@@ -11,11 +11,32 @@ requires-python = ">=3.10"
 keywords = ["bot", "scraping", "telegram"]
 license = { text = "MIT" }
 classifiers = ["Programming Language :: Python :: 3"]
-dependencies = ["python-telegram-bot==21.1"]
+dependencies = [
+    "python-telegram-bot==21.1",
+    "typer==0.12.3",
+    "pydantic==2.7.0",
+    "requests==2.31.0",
+    "beautifulsoup4==4.12.3",
+]
 dynamic = ["version"]
 
 [project.optional-dependencies]
-dev = ["pytest", "ruff", "pre-commit", "mypy"]
+dev = [
+    "pytest",
+    "ruff",
+    "pre-commit",
+    "mypy",
+    "types-requests",
+    "types-beautifulsoup4",
+]
+
+[tool.setuptools.dynamic]
+version = { attr = "website_monitoring_bot.__version__" }
 
 # [project.scripts]
 # my-script = "my_package.module:function"
+
+[tool.pytest.ini_options]
+# minversion = "6.0"
+# addopts = "-ra -q"
+testpaths = ["test"]
