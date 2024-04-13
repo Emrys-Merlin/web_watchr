@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "website_monitoring_bot"
+authors = [{ name = "Tim Adler", email = "tim+github@emrys-merlin.de" }]
+description = "Monitors a website for changes and publishes them on telegram"
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["bot", "scraping", "telegram"]
+license = { text = "MIT" }
+classifiers = ["Programming Language :: Python :: 3"]
+dependencies = ["python-telegram-bot==21.1"]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff", "pre-commit", "mypy"]
+
+# [project.scripts]
+# my-script = "my_package.module:function"
