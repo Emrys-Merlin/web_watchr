@@ -1,2 +1,2 @@
-# website_monitoring_bot
+# WebWatchr
 A bot that monitors a website and publishes changes via telegram
