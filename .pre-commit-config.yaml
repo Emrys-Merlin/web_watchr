@@ -9,6 +9,7 @@ repos:
       - id: check-merge-conflict
       - id: check-toml
       - id: name-tests-test
+        args: [--pytest-test-first]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.3.7

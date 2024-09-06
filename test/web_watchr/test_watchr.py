@@ -24,6 +24,6 @@ def test_watchr(
     for _ in range(n):
         mocked_watchr()
 
-    assert mocked_watchr.poller.call_count == n
+    assert mock_variable_poller.call_count == n
     assert mocked_watchr.comparer.call_count == n
     assert mocked_watchr.alerter.call_count == n_sent
