@@ -1,66 +1,60 @@
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from typing import Callable
+from typing import Iterator
+from unittest.mock import MagicMock
 
 import pytest
-from pydantic.networks import AnyHttpUrl
-from website_monitoring_bot.compare.fs_comparer import FSComparer, FSComparerConfig
-from website_monitoring_bot.poll import Poll
+from web_watchr.alert.abstract_alerter import AbstractAlerter
+from web_watchr.compare.abstract_comparer import AbstractComparer, Status
+from web_watchr.compare.fs_comparer import FSComparer
+from web_watchr.watchr import Watchr
 
 
 @pytest.fixture()
-def test_url() -> str:
-    return "http://example.com/"
+def cache_dir() -> Iterator[Path]:
+    with TemporaryDirectory() as temp_dir:
+        yield Path(temp_dir) / "cache"
 
 
 @pytest.fixture()
-def test_element():
-    return "test_element"
-
-
-@pytest.fixture
-def poll_config(
-    test_url: str,
-    test_element: str,
-) -> Poll:
-    return Poll(
-        url=test_url,
-        element=test_element,
-    )
-
-
-@pytest.fixture
-def test_page_path() -> Path:
-    return Path(__file__).parent / "data/test.html"
-
-
-@pytest.fixture
-def test_page(test_page_path: Path) -> str:
-    with open(test_page_path, "r") as f:
-        return f.read()
-
-
-@pytest.fixture
-def test_cache_dir() -> Path:
-    return Path(TemporaryDirectory().name)
-
-
-@pytest.fixture
-def test_fs_comparer_config(test_cache_dir: Path) -> FSComparerConfig:
-    return FSComparerConfig(cache_dir=test_cache_dir)
-
-
-@pytest.fixture
-def mock_poller() -> Callable[[], str]:
-    return lambda: "test"
-
-
-@pytest.fixture
-def test_fs_comparer(
-    test_fs_comparer_config: FSComparerConfig,
-    mock_poller: Callable[[], str],
+def fs_comparer(
+    cache_dir: Path,
 ) -> FSComparer:
-    return FSComparer(
-        config=test_fs_comparer_config,
-        poller=mock_poller,
+    return FSComparer(cache_dir=cache_dir)
+
+
+@pytest.fixture()
+def mock_variable_poller() -> MagicMock:
+    poller = MagicMock()
+    poller.side_effect = ["a", "b", "c"]
+    return poller
+
+
+@pytest.fixture()
+def mock_status_list() -> list[Status]:
+    return [Status.CHANGED, Status.NO_CHANGES, Status.CHANGED]
+
+
+@pytest.fixture()
+def mock_comparer(
+    mock_status_list: list[Status],
+) -> MagicMock:
+    mock = MagicMock(spec=AbstractComparer)
+    mock.side_effect = mock_status_list
+    return mock
+
+
+@pytest.fixture()
+def mock_alerter() -> MagicMock:
+    return MagicMock(spec=AbstractAlerter)
+
+
+@pytest.fixture()
+def mocked_watchr(
+    mock_comparer: MagicMock,
+    mock_alerter: MagicMock,
+) -> Watchr:
+    return Watchr(
+        comparer=mock_comparer,
+        alerter=mock_alerter,
     )
