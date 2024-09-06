@@ -27,8 +27,6 @@ dev = [
     "ruff",
     "pre-commit",
     "mypy",
-    "types-requests",
-    "types-beautifulsoup4",
     "ipdb",
 ]
 
