@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>API Reference - WebWatchr Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "API Reference";
+        var mkdocs_page_input_path = "api.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> WebWatchr Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">WebWatchr Documentation</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">API Reference</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#web_watchr">web_watchr</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#web_watchr.Watchr">Watchr</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#web_watchr.Watchr.poller">poller</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#web_watchr.Watchr.__call__">__call__</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#web_watchr.Watchr.set_poller">set_poller</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#web_watchrcompare">web_watchr.compare</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#web_watchr.compare.Status">Status</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#web_watchr.compare.AbstractComparer">AbstractComparer</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#web_watchr.compare.AbstractComparer.__call__">__call__</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#web_watchr.compare.DummyComparer">DummyComparer</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#web_watchr.compare.DummyComparer.__call__">__call__</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#web_watchr.compare.FSComparer">FSComparer</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#web_watchr.compare.FSComparer.cache_path">cache_path</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#web_watchr.compare.FSComparer.__call__">__call__</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#web_watchralert">web_watchr.alert</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#web_watchr.alert.AbstractAlerter">AbstractAlerter</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#web_watchr.alert.AbstractAlerter.__call__">__call__</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#web_watchr.alert.PrintAlerter">PrintAlerter</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#web_watchr.alert.PrintAlerter.__call__">__call__</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#web_watchr.alert.TelegramAlerter">TelegramAlerter</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#web_watchr.alert.TelegramAlerter.bot">bot</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#web_watchr.alert.TelegramAlerter.__call__">__call__</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">WebWatchr Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">API Reference</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Emrys-Merlin/web_watchr/edit/master/docs/api.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="api-reference">API Reference</h1>
+<p>The WebWatchr consists of three parts. </p>
+<ol>
+<li><code>web_watchr</code>: This module contains the <a class="autorefs autorefs-internal" href="#web_watchr.Watchr"><code>web_watchr.Watchr</code></a> class that orchestrates the whole polling, comparing, and alerting.</li>
+<li><code>web_watchr.compare</code>: This module contains classes that can be used to check if the state has changed. If you want to implement your own comparer, you need to inherit from <a class="autorefs autorefs-internal" href="#web_watchr.compare.AbstractComparer"><code>web_watchr.compare.AbstractComparer</code></a>.</li>
+<li><code>web_watchr.alert</code>: This module contains classes that can be used to send out alerts of a new state. If you want to implement your own comparer, you need to inherit from <a class="autorefs autorefs-internal" href="#web_watchr.alert.AbstractAlerter"><code>web_watchr.alert.AbstractAlerter</code></a>.</li>
+</ol>
+<h2 id="web_watchr">web_watchr</h2>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="web_watchr.Watchr" class="doc doc-heading">
+            <code>web_watchr.Watchr</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
+
+
+        <p>Central class that orchestrates the polling, comparing, and alerting process.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>alerter</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="web_watchr.alert.AbstractAlerter" href="#web_watchr.alert.AbstractAlerter">AbstractAlerter</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The instance is called with the scraped text and is responsible to send out the alert.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>comparer</code></b>
+                  (<code><a class="autorefs autorefs-internal" title="web_watchr.compare.AbstractComparer" href="#web_watchr.compare.AbstractComparer">AbstractComparer</a></code>)
+              –
+              <div class="doc-md-description">
+                <p>The instance is called with the scraped text and is responsible to compare the text with
+the previous state to check if there are any changes and an alert is necessary.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+              <details class="quote">
+                <summary>Source code in <code>src/web_watchr/watchr.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Watchr</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Central class that orchestrates the polling, comparing, and alerting process.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        alerter: The instance is called with the scraped text and is responsible to send out the alert.</span>
+<span class="sd">        comparer: The instance is called with the scraped text and is responsible to compare the text with</span>
+<span class="sd">            the previous state to check if there are any changes and an alert is necessary.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">comparer</span><span class="p">:</span> <span class="n">AbstractComparer</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">FSComparer</span><span class="p">)</span>
+    <span class="n">alerter</span><span class="p">:</span> <span class="n">AbstractAlerter</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">PrintAlerter</span><span class="p">)</span>
+
+    <span class="n">_poller</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Playwright</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">PrivateAttr</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">poller</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Playwright</span><span class="p">],</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The poller function that scrapes the text from the website.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_poller</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Please set a poller function using the `set_poller` decorator.&quot;</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_poller</span>
+
+    <span class="k">def</span> <span class="nf">set_poller</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Playwright</span><span class="p">],</span> <span class="nb">str</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Playwright</span><span class="p">],</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Decorator to set the poller function.</span>
+
+<span class="sd">        The wrapper returns the function unchanged, but stores it in the `_poller` attribute.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            f: A function that takes a `Playwright` instance and returns the scraped text.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The function that was passed in.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_poller</span> <span class="o">=</span> <span class="n">f</span>
+        <span class="k">return</span> <span class="n">f</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Main method that orchestrates the polling, comparing, and alerting process.</span>
+
+<span class="sd">        When called the poller function is called to scrape the text from the website. The text is then</span>
+<span class="sd">        compared to the previous state. If there are changes, an alert is sent out.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">sync_playwright</span><span class="p">()</span> <span class="k">as</span> <span class="n">playwright</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poller</span><span class="p">(</span><span class="n">playwright</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">comparer</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">==</span> <span class="n">Status</span><span class="o">.</span><span class="n">NO_CHANGES</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No changes detected.&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Changes detected! Sending alert.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alerter</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="web_watchr.Watchr.poller" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">poller</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Playwright</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The poller function that scrapes the text from the website.</p>
+    </div>
+
+</div>
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="web_watchr.Watchr.__call__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__call__</span><span class="p">()</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Main method that orchestrates the polling, comparing, and alerting process.</p>
+<p>When called the poller function is called to scrape the text from the website. The text is then
+compared to the previous state. If there are changes, an alert is sent out.</p>
+
+            <details class="quote">
+              <summary>Source code in <code>src/web_watchr/watchr.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Main method that orchestrates the polling, comparing, and alerting process.</span>
+
+<span class="sd">    When called the poller function is called to scrape the text from the website. The text is then</span>
+<span class="sd">    compared to the previous state. If there are changes, an alert is sent out.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">sync_playwright</span><span class="p">()</span> <span class="k">as</span> <span class="n">playwright</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poller</span><span class="p">(</span><span class="n">playwright</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">comparer</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">==</span> <span class="n">Status</span><span class="o">.</span><span class="n">NO_CHANGES</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No changes detected.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Changes detected! Sending alert.&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">alerter</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="web_watchr.Watchr.set_poller" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">set_poller</span><span class="p">(</span><span class="n">f</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Decorator to set the poller function.</p>
+<p>The wrapper returns the function unchanged, but stores it in the <code>_poller</code> attribute.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>f</code></b>
+                  (<code><span title="typing.Callable">Callable</span>[[<span title="playwright.sync_api.Playwright">Playwright</span>], str]</code>)
+              –
+              <div class="doc-md-description">
+                <p>A function that takes a <code>Playwright</code> instance and returns the scraped text.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="typing.Callable">Callable</span>[[<span title="playwright.sync_api.Playwright">Playwright</span>], str]</code>
+              –
+              <div class="doc-md-description">
+                <p>The function that was passed in.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>src/web_watchr/watchr.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_poller</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Playwright</span><span class="p">],</span> <span class="nb">str</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Playwright</span><span class="p">],</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Decorator to set the poller function.</span>
+
+<span class="sd">    The wrapper returns the function unchanged, but stores it in the `_poller` attribute.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        f: A function that takes a `Playwright` instance and returns the scraped text.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The function that was passed in.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_poller</span> <span class="o">=</span> <span class="n">f</span>
+    <span class="k">return</span> <span class="n">f</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><p><br></p>
+<h2 id="web_watchrcompare">web_watchr.compare</h2>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="web_watchr.compare.Status" class="doc doc-heading">
+            <code>web_watchr.compare.Status</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="enum.Enum">Enum</span></code></p>
+
+
+        <p>Enum representing the status of a comparison.</p>
+<p>Convenience enum because I got confused with booleans.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>CHANGED</code></b>
+              –
+              <div class="doc-md-description">
+                <p>The text has changed.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>NO_CHANGES</code></b>
+              –
+              <div class="doc-md-description">
+                <p>The text has not changed.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+              <details class="quote">
+                <summary>Source code in <code>src/web_watchr/compare/abstract_comparer.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Status</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enum representing the status of a comparison.</span>
+
+<span class="sd">    Convenience enum because I got confused with booleans.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        CHANGED: The text has changed.</span>
+<span class="sd">        NO_CHANGES: The text has not changed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">CHANGED</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">NO_CHANGES</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div><p><br>
+</p>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="web_watchr.compare.AbstractComparer" class="doc doc-heading">
+            <code>web_watchr.compare.AbstractComparer</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code>, <code><span title="abc.ABC">ABC</span></code></p>
+
+
+        <p>Decide if a text has changed.</p>
+
+              <details class="quote">
+                <summary>Source code in <code>src/web_watchr/compare/abstract_comparer.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">AbstractComparer</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Decide if a text has changed.&quot;&quot;&quot;</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Status</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Decide if a text has changed.</span>
+
+<span class="sd">        A new comparer must implement this method. The method should compare the text with the previous</span>
+<span class="sd">        state and return the status of the comparison.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="web_watchr.compare.AbstractComparer.__call__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Decide if a text has changed.</p>
+<p>A new comparer must implement this method. The method should compare the text with the previous
+state and return the status of the comparison.</p>
+
+            <details class="quote">
+              <summary>Source code in <code>src/web_watchr/compare/abstract_comparer.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Status</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Decide if a text has changed.</span>
+
+<span class="sd">    A new comparer must implement this method. The method should compare the text with the previous</span>
+<span class="sd">    state and return the status of the comparison.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><p><br>
+</p>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="web_watchr.compare.DummyComparer" class="doc doc-heading">
+            <code>web_watchr.compare.DummyComparer</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="web_watchr.compare.AbstractComparer" href="#web_watchr.compare.AbstractComparer">AbstractComparer</a></code></p>
+
+
+        <p>A comparer that always returns <a class="autorefs autorefs-internal" href="#web_watchr.compare.Status"><code>Status.CHANGED</code></a>.</p>
+
+              <details class="quote">
+                <summary>Source code in <code>src/web_watchr/compare/dummy_comparer.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">DummyComparer</span><span class="p">(</span><span class="n">AbstractComparer</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A comparer that always returns [`Status.CHANGED`][web_watchr.compare.Status].&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Status</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Always return [`Status.CHANGED`][web_watchr.compare.Status].&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Status</span><span class="o">.</span><span class="n">CHANGED</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="web_watchr.compare.DummyComparer.__call__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Always return <a class="autorefs autorefs-internal" href="#web_watchr.compare.Status"><code>Status.CHANGED</code></a>.</p>
+
+            <details class="quote">
+              <summary>Source code in <code>src/web_watchr/compare/dummy_comparer.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Status</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Always return [`Status.CHANGED`][web_watchr.compare.Status].&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Status</span><span class="o">.</span><span class="n">CHANGED</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><p><br>
+</p>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="web_watchr.compare.FSComparer" class="doc doc-heading">
+            <code>web_watchr.compare.FSComparer</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="web_watchr.compare.AbstractComparer" href="#web_watchr.compare.AbstractComparer">AbstractComparer</a></code></p>
+
+
+        <p>A comparer that compares the text with the content of a file.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>cache_dir</code></b>
+                  (<code><span title="pathlib.Path">Path</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The directory where the cache file is stored. Defaults to <code>~/.local/share/website_monitoring_bot/cache</code>.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>send_on_missing</code></b>
+                  (<code>bool</code>)
+              –
+              <div class="doc-md-description">
+                <p>Whether to send a notification if the cache file is missing.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>identifier</code></b>
+                  (<code>str</code>)
+              –
+              <div class="doc-md-description">
+                <p>The identifier used for the cache file.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+              <details class="quote">
+                <summary>Source code in <code>src/web_watchr/compare/fs_comparer.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">FSComparer</span><span class="p">(</span><span class="n">AbstractComparer</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A comparer that compares the text with the content of a file.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        cache_dir: The directory where the cache file is stored. Defaults to `~/.local/share/website_monitoring_bot/cache`.</span>
+<span class="sd">        send_on_missing: Whether to send a notification if the cache file is missing.</span>
+<span class="sd">        identifier: The identifier used for the cache file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">cache_dir</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;~/.local/share/website_monitoring_bot/cache&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
+    <span class="n">send_on_missing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;fs_comparer&quot;</span>
+
+    <span class="n">_cache_path</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cache_path</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The path to the cache file.</span>
+
+<span class="sd">        Creates the cache directory if it does not exist.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cache_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s2">.txt&quot;</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache_dir</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating cache directory: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cache_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cache_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache_path</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Status</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compare the text with the content of the cache file.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text: The text to compare with the cache file.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            [`Status.CHANGED`][web_watchr.compare.Status] if the text is different from the cache file.</span>
+<span class="sd">            [`Status.NO_CHANGES`][web_watchr.compare.Status] if the text is the same as the cache file.</span>
+<span class="sd">            If the cache file is missing, it returns [`Status.CHANGED`][web_watchr.compare.Status] if `send_on_missing` is `True`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cache file not found: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cache_path</span><span class="si">}</span><span class="s2">. Saving new state.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_save</span><span class="p">(</span><span class="n">new_state</span><span class="o">=</span><span class="n">text</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">Status</span><span class="o">.</span><span class="n">CHANGED</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">send_on_missing</span> <span class="k">else</span> <span class="n">Status</span><span class="o">.</span><span class="n">NO_CHANGES</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_equal_to_cache</span><span class="p">(</span><span class="n">new_state</span><span class="o">=</span><span class="n">text</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_save</span><span class="p">(</span><span class="n">new_state</span><span class="o">=</span><span class="n">text</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">Status</span><span class="o">.</span><span class="n">CHANGED</span>
+
+        <span class="k">return</span> <span class="n">Status</span><span class="o">.</span><span class="n">NO_CHANGES</span>
+
+    <span class="k">def</span> <span class="nf">_load</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_equal_to_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">new_state</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">old_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">old_state</span> <span class="o">==</span> <span class="n">new_state</span>
+
+    <span class="k">def</span> <span class="nf">_save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">new_state</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">new_state</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="web_watchr.compare.FSComparer.cache_path" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">cache_path</span><span class="p">:</span> <span class="n">Path</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The path to the cache file.</p>
+<p>Creates the cache directory if it does not exist.</p>
+    </div>
+
+</div>
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="web_watchr.compare.FSComparer.__call__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Compare the text with the content of the cache file.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>text</code></b>
+                  (<code>str</code>)
+              –
+              <div class="doc-md-description">
+                <p>The text to compare with the cache file.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><a class="autorefs autorefs-internal" title="web_watchr.compare.abstract_comparer.Status" href="#web_watchr.compare.Status">Status</a></code>
+              –
+              <div class="doc-md-description">
+                <p><a class="autorefs autorefs-internal" href="#web_watchr.compare.Status"><code>Status.CHANGED</code></a> if the text is different from the cache file.</p>
+              </div>
+            </li>
+            <li>
+                  <code><a class="autorefs autorefs-internal" title="web_watchr.compare.abstract_comparer.Status" href="#web_watchr.compare.Status">Status</a></code>
+              –
+              <div class="doc-md-description">
+                <p><a class="autorefs autorefs-internal" href="#web_watchr.compare.Status"><code>Status.NO_CHANGES</code></a> if the text is the same as the cache file.</p>
+              </div>
+            </li>
+            <li>
+                  <code><a class="autorefs autorefs-internal" title="web_watchr.compare.abstract_comparer.Status" href="#web_watchr.compare.Status">Status</a></code>
+              –
+              <div class="doc-md-description">
+                <p>If the cache file is missing, it returns <a class="autorefs autorefs-internal" href="#web_watchr.compare.Status"><code>Status.CHANGED</code></a> if <code>send_on_missing</code> is <code>True</code>.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>src/web_watchr/compare/fs_comparer.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Status</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compare the text with the content of the cache file.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        text: The text to compare with the cache file.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        [`Status.CHANGED`][web_watchr.compare.Status] if the text is different from the cache file.</span>
+<span class="sd">        [`Status.NO_CHANGES`][web_watchr.compare.Status] if the text is the same as the cache file.</span>
+<span class="sd">        If the cache file is missing, it returns [`Status.CHANGED`][web_watchr.compare.Status] if `send_on_missing` is `True`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cache file not found: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cache_path</span><span class="si">}</span><span class="s2">. Saving new state.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_save</span><span class="p">(</span><span class="n">new_state</span><span class="o">=</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Status</span><span class="o">.</span><span class="n">CHANGED</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">send_on_missing</span> <span class="k">else</span> <span class="n">Status</span><span class="o">.</span><span class="n">NO_CHANGES</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_equal_to_cache</span><span class="p">(</span><span class="n">new_state</span><span class="o">=</span><span class="n">text</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_save</span><span class="p">(</span><span class="n">new_state</span><span class="o">=</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Status</span><span class="o">.</span><span class="n">CHANGED</span>
+
+    <span class="k">return</span> <span class="n">Status</span><span class="o">.</span><span class="n">NO_CHANGES</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><p><br></p>
+<h2 id="web_watchralert">web_watchr.alert</h2>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="web_watchr.alert.AbstractAlerter" class="doc doc-heading">
+            <code>web_watchr.alert.AbstractAlerter</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code>, <code><span title="abc.ABC">ABC</span></code></p>
+
+
+        <p>Send an alert.</p>
+
+              <details class="quote">
+                <summary>Source code in <code>src/web_watchr/alert/abstract_alerter.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">AbstractAlerter</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Send an alert.&quot;&quot;&quot;</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Send an alert.</span>
+
+<span class="sd">        A new alerter must implement this method. The method should send the alert with the given text.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text: The text of the alert.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="web_watchr.alert.AbstractAlerter.__call__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Send an alert.</p>
+<p>A new alerter must implement this method. The method should send the alert with the given text.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>text</code></b>
+                  (<code>str</code>)
+              –
+              <div class="doc-md-description">
+                <p>The text of the alert.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>src/web_watchr/alert/abstract_alerter.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Send an alert.</span>
+
+<span class="sd">    A new alerter must implement this method. The method should send the alert with the given text.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        text: The text of the alert.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><p><br>
+</p>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="web_watchr.alert.PrintAlerter" class="doc doc-heading">
+            <code>web_watchr.alert.PrintAlerter</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="web_watchr.alert.AbstractAlerter" href="#web_watchr.alert.AbstractAlerter">AbstractAlerter</a></code></p>
+
+
+        <p>Print the alert to the standard output.</p>
+
+              <details class="quote">
+                <summary>Source code in <code>src/web_watchr/alert/print_alerter.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">PrintAlerter</span><span class="p">(</span><span class="n">AbstractAlerter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Print the alert to the standard output.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Print the alert to the standard output.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text: The text of the alert.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="web_watchr.alert.PrintAlerter.__call__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Print the alert to the standard output.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>text</code></b>
+                  (<code>str</code>)
+              –
+              <div class="doc-md-description">
+                <p>The text of the alert.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>src/web_watchr/alert/print_alerter.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Print the alert to the standard output.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        text: The text of the alert.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><p><br>
+</p>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="web_watchr.alert.TelegramAlerter" class="doc doc-heading">
+            <code>web_watchr.alert.TelegramAlerter</code>
+
+
+</h3>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="web_watchr.alert.AbstractAlerter" href="#web_watchr.alert.AbstractAlerter">AbstractAlerter</a></code></p>
+
+
+        <p>Sends a message to a telegram chat.</p>
+<p>For this alerter to work, you need to
+<a href="https://core.telegram.org/bots/tutorial#obtain-your-bot-token">create a telegram bot and get its token</a>.
+Furthermore, the bot needs to be added to the chat you want to send messages to and you
+need to retrieve the chat ID of the chat (e.g., like <a href="https://stackoverflow.com/a/32572159/9685500">this</a>).</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>token</code></b>
+                  (<code>str</code>)
+              –
+              <div class="doc-md-description">
+                <p>The token of the telegram bot.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>chat_id</code></b>
+                  (<code>str</code>)
+              –
+              <div class="doc-md-description">
+                <p>The chat ID to send the message to.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+              <details class="quote">
+                <summary>Source code in <code>src/web_watchr/alert/telegram_alerter.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">TelegramAlerter</span><span class="p">(</span><span class="n">AbstractAlerter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sends a message to a telegram chat.</span>
+
+<span class="sd">    For this alerter to work, you need to</span>
+<span class="sd">    [create a telegram bot and get its token](https://core.telegram.org/bots/tutorial#obtain-your-bot-token).</span>
+<span class="sd">    Furthermore, the bot needs to be added to the chat you want to send messages to and you</span>
+<span class="sd">    need to retrieve the chat ID of the chat (e.g., like [this](https://stackoverflow.com/a/32572159/9685500)).</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        token: The token of the telegram bot.</span>
+<span class="sd">        chat_id: The chat ID to send the message to.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">token</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">chat_id</span><span class="p">:</span> <span class="nb">str</span>
+
+    <span class="n">_bot</span><span class="p">:</span> <span class="n">Bot</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">bot</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Telegram bot instance&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span> <span class="o">=</span> <span class="n">Bot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bot</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Send a message to a telegram chat.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text: The text of the message.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sending message &#39;</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2">&#39; to telegram.&quot;</span><span class="p">)</span>
+        <span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bot</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="n">chat_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">chat_id</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="web_watchr.alert.TelegramAlerter.bot" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">bot</span><span class="p">:</span> <span class="n">Bot</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Telegram bot instance</p>
+    </div>
+
+</div>
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="web_watchr.alert.TelegramAlerter.__call__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Send a message to a telegram chat.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>text</code></b>
+                  (<code>str</code>)
+              –
+              <div class="doc-md-description">
+                <p>The text of the message.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+            <details class="quote">
+              <summary>Source code in <code>src/web_watchr/alert/telegram_alerter.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Send a message to a telegram chat.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        text: The text of the message.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sending message &#39;</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2">&#39; to telegram.&quot;</span><span class="p">)</span>
+    <span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bot</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="n">chat_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">chat_id</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="WebWatchr Documentation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Emrys-Merlin/web_watchr" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
