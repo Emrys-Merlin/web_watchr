@@ -21,3 +21,21 @@ run-ci:
 .PHONY: docs
 docs:
 	mkdocs gh-deploy
+
+.PHONY: clean
+clean:
+	rm -rf site
+	rm -rf dist
+
+.PHONY: build
+build:
+	uv build
+
+# Needs different credentials
+# .PHONY: publish-test
+# publish-test:
+# 	uvx twine upload --repository testpypi dist/*
+
+.PHONY: publish
+publish:
+	uvx twine upload dist/*

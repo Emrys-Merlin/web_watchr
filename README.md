@@ -15,11 +15,14 @@ This python package is a framework around [Playwright](https://Playwright.dev/py
 
 ## Installation
 
-Currently, the package is only available on github. You can manually install it via:
+The package is available via PyPI. You can install it via
+```
+pip install web_watchr
+```
+If you prefer the latest changes, you can also install it directly from the repository via:
 ```
 pip install git+https://github.com/actions/setup-python
 ```
-I am currently working on publishing the package on PyPI.
 
 ## Usage
 
@@ -102,7 +105,7 @@ Running the script will now send updates to your phone via telegram!
 
 ## Documentation
 
-So far, almost all of the documentation is restricted to this readme. However, you can have a look at the [API Reference](https://emrys-merlin.github.io/website_monitoring_bot/api).
+So far, almost all of the documentation is restricted to this readme. However, you can have a look at the [API Reference](https://emrys-merlin.github.io/web_watchr/api).
 
 ## Contribution
 
