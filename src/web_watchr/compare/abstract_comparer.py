@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
-from enum import StrEnum, auto
+from enum import Enum, auto
 
 from pydantic import BaseModel
 
 
-class Status(StrEnum):
+class Status(Enum):
     CHANGED = auto()
     NO_CHANGES = auto()
 
