@@ -8,6 +8,14 @@ from . import AbstractComparer
 
 
 class FSComparer(AbstractComparer):
+    """A comparer that compares the text with the content of a file.
+
+    Attributes:
+        cache_dir: The directory where the cache file is stored. Defaults to `~/.local/share/website_monitoring_bot/cache`.
+        send_on_missing: Whether to send a notification if the cache file is missing.
+        identifier: The identifier used for the cache file.
+    """
+
     cache_dir: Path = Path("~/.local/share/website_monitoring_bot/cache").expanduser()
     send_on_missing: bool = False
     identifier: str = "fs_comparer"
@@ -16,6 +24,10 @@ class FSComparer(AbstractComparer):
 
     @property
     def cache_path(self) -> Path:
+        """The path to the cache file.
+
+        Creates the cache directory if it does not exist.
+        """
         if self._cache_path is None:
             self._cache_path = self.cache_dir / f"{self.identifier}.txt"
             if not self.cache_dir.exists():
@@ -25,6 +37,16 @@ class FSComparer(AbstractComparer):
         return self._cache_path
 
     def __call__(self, text: str) -> Status:
+        """Compare the text with the content of the cache file.
+
+        Args:
+            text: The text to compare with the cache file.
+
+        Returns:
+            [`Status.CHANGED`][web_watchr.compare.Status] if the text is different from the cache file.
+            [`Status.NO_CHANGES`][web_watchr.compare.Status] if the text is the same as the cache file.
+            If the cache file is missing, it returns [`Status.CHANGED`][web_watchr.compare.Status] if `send_on_missing` is `True`.
+        """
         if not self.cache_path.exists():
             logger.debug(f"Cache file not found: {self.cache_path}. Saving new state.")
             self._save(new_state=text)

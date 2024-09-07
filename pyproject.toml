@@ -29,6 +29,10 @@ dev = [
     "mypy",
     "ipdb",
 ]
+docs = [
+    "mkdocs",
+    "mkdocstrings[python]",
+]
 
 [tool.setuptools.dynamic]
 version = { attr = "web_watchr.__version__" }
