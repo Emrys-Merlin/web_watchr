@@ -139,7 +139,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="api-reference">API Reference</h1>
-<p>The WebWatchr consists of three parts. </p>
+<p>The WebWatchr consists of three parts.</p>
 <ol>
 <li><code>web_watchr</code>: This module contains the <a class="autorefs autorefs-internal" href="#web_watchr.Watchr"><code>web_watchr.Watchr</code></a> class that orchestrates the whole polling, comparing, and alerting.</li>
 <li><code>web_watchr.compare</code>: This module contains classes that can be used to check if the state has changed. If you want to implement your own comparer, you need to inherit from <a class="autorefs autorefs-internal" href="#web_watchr.compare.AbstractComparer"><code>web_watchr.compare.AbstractComparer</code></a>.</li>
@@ -843,7 +843,7 @@ state and return the status of the comparison.</p>
                   (<code><span title="pathlib.Path">Path</span></code>)
               –
               <div class="doc-md-description">
-                <p>The directory where the cache file is stored. Defaults to <code>~/.local/share/website_monitoring_bot/cache</code>.</p>
+                <p>The directory where the cache file is stored. Defaults to <code>~/.local/share/web_watchr/cache</code>.</p>
               </div>
             </li>
             <li>
@@ -934,12 +934,12 @@ state and return the status of the comparison.</p>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A comparer that compares the text with the content of a file.</span>
 
 <span class="sd">    Attributes:</span>
-<span class="sd">        cache_dir: The directory where the cache file is stored. Defaults to `~/.local/share/website_monitoring_bot/cache`.</span>
+<span class="sd">        cache_dir: The directory where the cache file is stored. Defaults to `~/.local/share/web_watchr/cache`.</span>
 <span class="sd">        send_on_missing: Whether to send a notification if the cache file is missing.</span>
 <span class="sd">        identifier: The identifier used for the cache file.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">cache_dir</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;~/.local/share/website_monitoring_bot/cache&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
+    <span class="n">cache_dir</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;~/.local/share/web_watchr/cache&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
     <span class="n">send_on_missing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;fs_comparer&quot;</span>
 
