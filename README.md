@@ -21,7 +21,7 @@ pip install web_watchr
 ```
 If you prefer the latest changes, you can also install it directly from the repository via:
 ```
-pip install git+https://github.com/actions/setup-python
+pip install git+https://github.com/Emrys-Merlin/web_watchr
 ```
 
 ## Usage
