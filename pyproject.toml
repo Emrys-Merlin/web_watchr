@@ -47,7 +47,7 @@ testpaths = ["test"]
 
 [project.urls]
 Homepage = "https://github.com/Emrys-Merlin/web_watchr"
-Documentation = "https://Emrys-Merlin.github.io/website_monitoring_bot/"
+Documentation = "https://Emrys-Merlin.github.io/web_watchr/"
 Repository = "https://github.com/Emrys-Merlin/web_watchr.git"
 "Bug Tracker" = "https://github.com/Emrys-Merlin/web_watchr/issues"
 # Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
