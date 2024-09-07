@@ -32,7 +32,8 @@ jobs:
         make run-ci
 
     - name: Create coverage badge
-      uses: gaelgirodon/ci-badges-action@v1
+      uses: gaelgirodon/ci-badges-action@v1.5.0
       with:
         gist-id: ${{ vars.GIST_ID_BADGES }}
         token: ${{ secrets.GIST_TOKEN }}
+        prefix: ${{ github.event.repository.name }}_${{ matrix.python-version }}
