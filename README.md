@@ -1,4 +1,4 @@
-![license](https://img.shields.io/github/license/Emrys-Merlin/web_watchr)
+![GitHub License](https://img.shields.io/github/license/Emrys-Merlin/web_watchr)
 ![Python Version from PEP 621 TOML](https://img.shields.io/python/required-version-toml?tomlFilePath=https%3A%2F%2Fraw.githubusercontent.com%2FEmrys-Merlin%2Fweb_watchr%2Fmain%2Fpyproject.toml)
 
 | 3.10 | 3.11 | 3.12 |
