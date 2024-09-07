@@ -11,12 +11,12 @@ class FSComparer(AbstractComparer):
     """A comparer that compares the text with the content of a file.
 
     Attributes:
-        cache_dir: The directory where the cache file is stored. Defaults to `~/.local/share/website_monitoring_bot/cache`.
+        cache_dir: The directory where the cache file is stored. Defaults to `~/.local/share/web_watchr/cache`.
         send_on_missing: Whether to send a notification if the cache file is missing.
         identifier: The identifier used for the cache file.
     """
 
-    cache_dir: Path = Path("~/.local/share/website_monitoring_bot/cache").expanduser()
+    cache_dir: Path = Path("~/.local/share/web_watchr/cache").expanduser()
     send_on_missing: bool = False
     identifier: str = "fs_comparer"
 
