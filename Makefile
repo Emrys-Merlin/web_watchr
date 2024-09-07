@@ -16,4 +16,4 @@ run-ci:
 	pip install uv
 	uv venv
 	uv pip install -e ".[dev]"
-	uv run pytest --cov=web_watchr --cov-report term-missing --junit-xml=report.xml
+	uv run pytest --cov=web_watchr --cov-report term-missing --cov-report xml:coverage.xml --junit-xml=report.xml

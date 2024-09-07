@@ -4,6 +4,7 @@
 | 3.10 | 3.11 | 3.12 |
 |------|------|------|
 |![tests](https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2FEmrys-Merlin%2Fec2e4e339a048ca0f0b996517d282a4a%2Fraw%2Fweb_watchr_3.10-junit-tests.json)|![tests](https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2FEmrys-Merlin%2Fec2e4e339a048ca0f0b996517d282a4a%2Fraw%2Fweb_watchr_3.11-junit-tests.json)|![tests](https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2FEmrys-Merlin%2Fec2e4e339a048ca0f0b996517d282a4a%2Fraw%2Fweb_watchr_3.12-junit-tests.json)|
+|![Endpoint Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2FEmrys-Merlin%2Fec2e4e339a048ca0f0b996517d282a4a%2Fraw%2F272263ce795e0ca0adf06fa6d8aa2fe496a778dd%2Fweb_watchr_3.10-cobertura-coverage.json)|![Endpoint Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2FEmrys-Merlin%2Fec2e4e339a048ca0f0b996517d282a4a%2Fraw%2F272263ce795e0ca0adf06fa6d8aa2fe496a778dd%2Fweb_watchr_3.11-cobertura-coverage.json)|![Endpoint Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fgist.githubusercontent.com%2FEmrys-Merlin%2Fec2e4e339a048ca0f0b996517d282a4a%2Fraw%2F272263ce795e0ca0adf06fa6d8aa2fe496a778dd%2Fweb_watchr_3.11-cobertura-coverage.json)|
 
 # WebWatchr
 A bot that monitors a website and publishes changes via telegram
