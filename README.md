@@ -23,7 +23,7 @@ I am currently working on publishing the package on PyPI.
 
 ## Usage
 
-After the installation, the intended way to invoke the framework is by writing a small runner script (which you can find [here](examples/simple_poll_example.py)):
+After the installation, the intended way to invoke the framework is by writing a small runner script (which you can find [here](examples/simple_dummy_example.py)):
 ```Python
 from playwright.sync_api import Playwright
 from web_watchr import Watchr
@@ -57,7 +57,7 @@ The runner consists of three parts:
 2. We implement the `poll` function and decorate it with `@watchr.set_poller`. The poll function contains all the website-specific logic to extract the text of interest. Most of this function can be automatically generated using [`playwright codegen`](https://playwright.dev/python/docs/codegen#running-codegen).
 3. We invoke `watchr`, which will poll the website once.
 
-By default, `watchr` will simply print the text to std out. If you want to receive alerts on your phone via telegram, we need to modify the script slightly:
+By default, `watchr` will simply print the text to std out. If you want to receive alerts on your phone via telegram, we need to modify the [script](examples/simple_telegram_alerting.py) slightly:
 ```Python
 import os
 
@@ -92,7 +92,22 @@ if __name__ == "__main__":
 
 There are two key changes compared to the inital script:
 
-1. We removed the `DummyComparer`. By default, `Watchr` uses an `FSComparer` which stores the old state in a file. The default location is `~/.local/share/web_watchr/cache`, which can be overwritten. This has the advantage that the runner does not need to run continously, but can be invoked periodically (e.g., via `cron`).
+1. We removed the `DummyComparer`. By default, `Watchr` uses an `FSComparer` which stores the old state in a file. The default location is `~/.local/share/web_watchr/cache`, which can be adapted. This has the advantage that the runner does not need to run continously, but can be invoked periodically (e.g., via `cron`).
 2. We instantiated a `TelegramAlerter` reading a `token` and a `chat_id` from some environment variables. These are secrets of your bot that you need to send messages with it. If you are unsure how to create a bot, please have a look [here](https://core.telegram.org/bots/tutorial#obtain-your-bot-token). To find out your `chat_id`, you can use the approach mentioned [here](https://stackoverflow.com/a/32572159/9685500).
 
+> [!CAUTION]
+> Keep your bot token secret. In particular, make sure to never add it to version control. Otherwise, malicious actors can use it for ther purposes.
+
 Running the script will now send updates to your phone via telegram!
+
+## Documentation
+
+So far, almost all of the documentation is restricted to this readme. However, you can have a look at the [API Reference](https://emrys-merlin.github.io/website_monitoring_bot/api).
+
+## Contribution
+
+If you like what you see and would like to extend it, you can do so by
+- filing an issue with a feature request (no promises on my part though) and
+- forking the repo and opening a pull request.
+
+I'm always happy to chat, so you can also simply reach out and we can talk.
