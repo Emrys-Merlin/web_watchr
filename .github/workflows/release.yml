@@ -1,9 +1,13 @@
 name: Release a new version
 
 on:
-  push:
+  pull_request:
     branches:
       - main
+    types:
+      - closed
+    paths:
+      - "src/web_watchr/__init__.py"
 
 jobs:
   release:
@@ -14,13 +18,32 @@ jobs:
       id-token: write
       contents: write
 
+    if: github.event.pull_request.merged == true
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Python semantic release
-        uses: python-semantic-release/python-semantic-release@v9.8.8
+      - name: Extract version
+        id: extract_version
+        run: |
+          echo "::set-output name=version::$(grep -oP '__version__ = "\K[^"]+' src/web_watchr/__init__.py)"
+        shell: bash
+
+      - name: Build and publish
+        run: |
+          make setup-ci
+          make build
+          make publish
+        shell: bash
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+
+      - name: Create release
+        uses: actions/create-release@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: v${{ steps.extract_version.outputs.version }}
+          release_name: v${{ steps.extract_version.outputs.version }}
+          draft: false
+          prerelease: false
