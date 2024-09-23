@@ -10,7 +10,7 @@ setup:
 test:
 	pytest --cov=web_watchr --cov-report term-missing
 
-.PHONY: setup-ci
+.PHONY: run-ci
 run-ci:
 	pip install --upgrade pip
 	pip install uv
