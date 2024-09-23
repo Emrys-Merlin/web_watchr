@@ -51,3 +51,13 @@ Documentation = "https://Emrys-Merlin.github.io/web_watchr/"
 Repository = "https://github.com/Emrys-Merlin/web_watchr.git"
 "Bug Tracker" = "https://github.com/Emrys-Merlin/web_watchr/issues"
 # Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
+
+[tool.semantic_release]
+version_variable = [
+    "src/web_watchr/__init__.py:__version__"
+]
+major_on_zero = true
+branch = "main"
+upload_to_PyPI = true
+upload_to_release = true
+build_command = "make setup && make build"
