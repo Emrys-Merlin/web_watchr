@@ -10,12 +10,15 @@ setup:
 test:
 	pytest --cov=web_watchr --cov-report term-missing
 
-.PHONY: run-ci
-run-ci:
+.PHONY: setup-ci
+setup-ci:
 	pip install --upgrade pip
 	pip install uv
 	uv venv
 	uv pip install -e ".[dev]"
+
+.PHONY: run-ci
+run-ci: setup-ci
 	uv run pytest --cov=web_watchr --cov-report term-missing --cov-report xml:coverage.xml --junit-xml=report.xml
 
 .PHONY: docs
