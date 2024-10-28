@@ -78,7 +78,7 @@ jobs:
 
     - name: Fail if any matrix job failed
       if: needs.test.result != 'success'
-      uses: actions/github-script@v3
+      uses: actions/github-script@v7
       with:
         script: |
           core.setFailed('Some matrix job failed. Please check the logs.')
