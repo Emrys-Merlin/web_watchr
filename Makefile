@@ -2,20 +2,16 @@ SHELL := /bin/bash
 
 .PHONY: setup
 setup:
-	pip install uv
-	uv pip install -e ".[dev,docs]"
-	pre-commit install
+	uv sync
+	uv run pre-commit install
 
 .PHONY: test
 test:
-	pytest --cov=web_watchr --cov-report term-missing
+	uv run pytest --cov=web_watchr --cov-report term-missing
 
 .PHONY: setup-ci
 setup-ci:
-	pip install --upgrade pip
-	pip install uv
-	uv venv
-	uv pip install -e ".[dev]"
+	uv sync
 
 .PHONY: run-ci
 run-ci: setup-ci
@@ -23,7 +19,7 @@ run-ci: setup-ci
 
 .PHONY: docs
 docs:
-	mkdocs gh-deploy
+	uv run mkdocs gh-deploy
 
 .PHONY: clean
 clean:
@@ -41,4 +37,4 @@ build:
 
 .PHONY: publish
 publish:
-	uvx twine upload dist/*
+	uv publish

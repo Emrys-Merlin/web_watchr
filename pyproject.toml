@@ -28,20 +28,7 @@ dependencies = [
 ]
 dynamic = ["version"]
 
-[project.optional-dependencies]
-dev = [
-    "pytest",
-    "pytest-cov",
-    "ruff",
-    "pre-commit",
-    "mypy",
-    "ipdb",
-]
-docs = [
-    "mkdocs",
-    "mkdocstrings[python]",
-]
-all = ["web_watchr[dev,docs]"]
+# [project.optional-dependencies]
 
 [tool.hatch.version]
 path = "src/web_watchr/__init__.py"
@@ -61,12 +48,19 @@ Repository = "https://github.com/Emrys-Merlin/web_watchr.git"
 "Bug Tracker" = "https://github.com/Emrys-Merlin/web_watchr/issues"
 # Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
 
-[tool.semantic_release]
-version_variable = [
-    "src/web_watchr/__init__.py:__version__"
+[tool.uv]
+default-groups = ["dev", "docs"]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "ruff",
+    "pre-commit",
+    "mypy",
+    "ipdb",
 ]
-major_on_zero = true
-branch = "main"
-upload_to_PyPI = true
-upload_to_release = true
-build_command = "make setup-ci && make build"
+docs = [
+    "mkdocs",
+    "mkdocstrings[python]",
+]
