@@ -37,8 +37,7 @@ jobs:
           make publish
         shell: bash
         env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+          UV_PUBLISH_TOKEN: ${{ secrets.PYPI_PASSWORD }}
 
       - name: Create release
         uses: actions/create-release@v1
