@@ -21,7 +21,7 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
 ]
 dependencies = [
-    "python-telegram-bot==21.6",
+    "python-telegram-bot==21.7",
     "pydantic==2.9.2",
     "loguru==0.7.2",
     "playwright==1.48.0",
