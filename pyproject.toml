@@ -22,7 +22,7 @@ classifiers = [
 ]
 dependencies = [
     "python-telegram-bot==21.10",
-    "pydantic==2.10.5",
+    "pydantic==2.10.6",
     "loguru==0.7.3",
     "playwright==1.49.1",
 ]
